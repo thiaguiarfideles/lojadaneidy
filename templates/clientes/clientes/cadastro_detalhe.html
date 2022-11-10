@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load model_field %}
+
+{% block content %}
+<h1>Cadastro {{pacientes.nome}}</h1>
+    <div class='row'>
+    <div class='col-sm-10 col-sm-offset-1'>
+        <table class="table table-hover table-auto">
+            <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Data de Envio</th>
+                <th>Horário de Envio</th>
+                <th>Usuario</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{pacientes.nome}}</td>
+                    <td>{{pacientes.criacao|date:"d/m/Y"}}</td>
+                    <td>{{pacientes.criacao|time:"h:i:s"}}</td>
+                    <td>{{pacientes.user}}</td>
+                </tr>
+        </table>
+    </div>
+    </div>
+<div class='row'>
+    <div class='col-sm-6 col-sm-offset-1'>
+
+        <table class="table table-hover table-auto">
+            <tbody>
+                <tr>
+                    <td>Paciente</td>
+                    <td>{{pacientes.nome}}</td>
+                </tr>
+
+               </tbody>
+        </table>
+</div>
+
+{% endblock %}

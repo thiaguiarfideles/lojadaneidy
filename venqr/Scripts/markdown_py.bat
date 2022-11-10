@@ -1,0 +1,1 @@
+@"C:\Users\thiago.fideles\Documents\lojadaneidy\venqr\Scripts\python.exe" "C:\Users\thiago.fideles\Documents\lojadaneidy\venqr\Scripts\markdown_py" %*

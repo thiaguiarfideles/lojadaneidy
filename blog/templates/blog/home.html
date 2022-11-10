@@ -1,0 +1,29 @@
+{% extends "blog/base.html" %}
+{% load embed_video_tags %}
+{% block content %}
+    {% for post in posts %}
+        <article class="media content-section">
+          <img class="rounded-circle article-img" src="/media/{{ user.userprofile.foto_perfil }}">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">Autor: {{ post.author }}</a>
+              <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+            </div>
+            <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
+            <p class="article-content"><img class="img-thumbnail mx-auto d-block img-fluid" src="/media/{{ post.image }}"><p class="text-right"><mark>Autor:{{ post.author }}|{{ post.date_posted|date:"F d, Y, h:m" }}</mark></p></p>
+            {% video object.video as my_video %}
+  <pre>
+    Backend: {{ my_video.backend }}
+    URL: {{ my_video.url }}
+    Code: {{ my_video.code }}
+    Thumbnail: {{ my_video.thumbnail }}
+    HTTPS: {% if my_video.protocol == 'https' %}Yes{% else %}No{% endif %}</pre>
+
+  {% video my_video "large" %}
+{% endvideo %}
+
+       
+          </div>
+        </article>
+    {% endfor %}
+{% endblock content %}

@@ -1,0 +1,114 @@
+<style>
+  .page-footer{
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        
+      
+          /* margin-left: 0.2rem; */
+    
+  
+  }
+  a{
+    text-decoration: none;
+    color:aliceblue;
+    
+  }
+  a:hover{
+    color:burlywood;
+  }
+  li{
+    list-style-type: none;
+  }
+</style>
+<div class="page-footer " style="background:rgb(156, 10, 105); border: 2px solid black;">
+    <div class="container"  >
+      <div class="row">
+        <div class="col l6 s12" style="margin-top:80px;">
+          <h5 class=" text-lighten-4 display-4 text-center text-light mt-3" >tatiHut</h5>
+          <p class="text-light lead text-center " >We server 100% qualityful of products.</p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="text-white display-4" style="font-size:40px ; margin-top: 100px;" >Options:</h5>
+
+          <ul>
+            <li style="margin-top: 10px; margin-left: 20px;">
+              <a class=" white-text text-uppercase"  href="/">
+                <span>
+                  <i class="fa-1x p-2 mt-3 fa-solid fa-shop float-right text-light"></i>
+                </span>
+              Your Shop
+            </a>
+            </li>
+            <li style="margin-top: 10px; margin-left: 20px;"><a class=" white-text text-uppercase" href="{% url 'cart' %}">
+              <span><i class="fa-1x p-2 mt-3 fa-solid fa-cart-plus float-right text-light"></i>
+                                
+              </span>
+              Cart</a></li>
+            <li style="margin-top: 10px;  margin-left: 20px;"><a class=" white-text text-uppercase" href="{% url 'home_Blog' %}">
+              <span>
+                <i class="fa-1x p-2 mt-3 fa-solid fa-pen-nib float-right text-light"></i>
+
+               
+              
+              </span>
+              
+              Blog</a></li>
+            
+            <li style="margin-top: 10px;  margin-left: 20px;"><a class="white-text text-uppercase text-lighten-3" href="{% url 'profile' %}">
+              
+              <span>
+                <i class="fa-1x p-2 mt-3 fa-solid fa-user float-right text-light">
+                  
+                </i>
+                                
+              </span>
+              Profile</a>
+            </li>
+            <li style="margin-top: 12px;  margin-left: 20px;"><a class="white-text text-uppercase text-lighten-3" href="{% url 'order_page' %}">
+              
+              <span>
+                <i class="fa-1x p-2  fa-solid fa-arrow-down-a-z float-right text-light">
+                  
+                </i>
+                                
+              </span>
+              Orders</a>
+            </li>
+
+           
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-copyright bg-dark p-3">
+      <div class="container text-info " >
+      <a href="" class="text-info">© 2021 Copyright tatiHut</a>
+      {% if request.user.is_authenticated %}
+      <a class=" text-uppercase  text-info float-end" href="{% url 'logout' %}" style="margin-left: 20px;">
+        <span>
+          <i class="fa-1x p-2  fa-solid fa-anchor-circle-xmark float-right text-light">
+
+          </i>
+        
+        Logout</a>
+      <a class=" text-uppercase text-info  float-end" href="{% url 'order_page' %} ">
+        <span><i class="fa-1x p-2  fa-solid fa-arrow-down-a-z float-right text-light"></i>
+        
+        Orders</a>
+      {% else %}
+      <a class="text-info text-uppercase  float-end " style="margin-left: 19px;" href="{% url 'login' %}"> 
+        
+        <span><i class="fa-1x p-2  fa-solid fa-arrow-down-a-z float-right text-light "></i>
+        
+        Login</a>
+      
+      <a class=" text-info float-end" href="{% url 'type_Sign' %}">
+        <span><i class="fa-1x p-2  fa-solid fa-user-plus text-light"></i>
+        
+        SignUp</a>
+      {% endif %}
+      </div>
+    </div>
+</div>

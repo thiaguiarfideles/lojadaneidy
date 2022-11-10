@@ -1,0 +1,51 @@
+<h1>Hey {{first_name}} {{last_name}}!!</h1>
+
+<h3>Your User Name: {{username}} </h3>
+
+<h4>We just want to thank you for purchasing products from us.</h4>
+
+<h2 style="display: inline-block; color:rgb(25, 25, 55); text-align:center;">Your Order details: </h2>
+
+<h3>Total Order's Amount:---> <mark>{{curr}}</mark></h3>
+
+<table style="border: 1px solid rgb(14, 13, 13);">
+    <thead>
+        <tr style="color:darkblue; font-weight:bold ; ">
+            <th >Order Total</th>
+            <th>Shipping Address </th>
+            <th>Your Phone No</th>
+            <th>Order Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>&nbsp;{{curr}}</td>
+            <td>&nbsp;{{address}} &nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;{{phone}} </td>
+            <td>&nbsp;{{date}}</td>
+
+        </tr>
+    </tbody>
+</table>
+
+<br>
+
+<h4>
+    You have ordered total <mark>{{curr}}</mark> form us. You will get your desired products within <mark><b>3</b></mark> days at your given address( <b>{{address}}</b>) and our service stuff will contact with you at <mark>{{phone}}</mark>.
+</h4> 
+
+<h3 style="color:rgb(44, 4, 78);">
+    Thank you so much for being with us. Looking forward to seeing you there):
+</h3> 
+
+<!-- <a href="{% url 'invoice_page' %}" style="text-decoration: none; padding: 20px; background-color:black; color:white;">Generate Invoice</a> -->
+
+
+<h3 style="font-size:20px">
+From,
+<br>
+tatiHut company LTD.
+</h3>
+
+
+

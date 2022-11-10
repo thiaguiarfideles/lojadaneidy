@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <title>{% block title %}{% include "_brandname.html" %} :: {% endblock %}</title>
+    <!-- Add additional CSS in static file -->
+    {% load static %}
+    <script src="{% static 'usuarios/bootstrap-filestyle.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'usuarios/style.css' %}">
+
+    <style>
+    .jumbotron { color:red; background-color:#white;}
+
+    .footer {
+  position: absolute;
+  margin: 100px auto 0;
+  background-color: #393e46;
+  height: 14%;
+  top: 90%;
+  padding: 14px 14px 0 14px;
+  left: 0;
+  right: 0;
+  text-align: center; 
+}
+
+.hyperlink {
+  color: #cdffeb;
+  position: relative;
+  text-align: center;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  top: 0;
+  margin: auto;
+  font-size: 2em;
+}
+  </style>
+</head>
+<body>
+   <body style="background-color:#white;">
+   </body>
+  <div class="wrapper">
+      {% include '_navbar.html' %}
+{% block content %}
+{% endblock %}
+
+  </div> <!-- wrapper -->
+
+ <div class="footer">
+<a class="hyperlink" href="seusite">Visite</a>
+</div>
+
+  </div>
+</body>
+</html>

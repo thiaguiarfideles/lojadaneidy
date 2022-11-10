@@ -1,0 +1,185 @@
+<div class="row ">
+    <div class="col-lg-12">
+            <h3 class="display-4 my-5 p-3 text-center text-primary text-uppercase " id="love" >Your Shop</h3>
+            <!--Full section of prdocut-->
+            <div class="container mt-4">
+                    <div class="row">
+                <!--Category filter-->
+                <div class="col-lg-3 col-sm-3 mx-auto cat">
+                    <div class="list-group " >
+                        <a id='cross' href="/"      class="list-group-item list-group-item-action " 
+                        style="background-color: rgb(71, 5, 68);color: rgb(219, 15, 175); padding: 20px;"
+                        >
+                            All Products
+                        </a>
+
+                        {% for category in categories %}
+                
+                        <a  href="/?category_id={{category.id}}"      class="list-group-item list-group-item-action active" style="background-color: rgb(108, 19, 98); color: whitesmoke; padding: 15px; 
+                        
+                        ">
+                            {{category.name}}
+                        
+                        </a>
+                
+                        
+                
+                        {% endfor %}
+                    </div>
+                </div>
+                <!-- end Category filter-->
+                
+                
+                
+                <!--Products showing-->
+                    <div id="products" class="col-lg-9" >
+                <!--message -->    
+                {% if messages %}  
+                  <id id="products" class="col-lg-9 col-sm-9 mx-auto">
+                
+                    <class class="row mx-auto">
+                
+                        <class class="alert alert-warning alert-dismissible fade show" role="alert">
+                
+                            <!--message code-->
+                            
+                            <div class="notification-container">
+                                <div class="notification">
+                
+                                {% for message in messages %}
+                                <p {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+                                {% endfor %}
+                
+                                </div>
+                            </div>
+                
+                            
+                
+                            <!--end message code-->
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </class>
+                    </class>
+                </id>
+                {% endif %}
+                <!--message end-->
+                
+                         <!--Products div -->
+                                <div class="row mx-auto">
+                                    <!--Looping products on this div-->
+                                        {% for product in products %}
+                                            <div class="card rounded-top mx-auto mb-3 text-light " class="card_all"
+                                            style=" width: 20rem; 
+                                            background:rgb(68, 4, 70);" id="{{product.id}}">
+                                                <div class="col-lg-12 col-sm-12" style="height:150px;  width: auto">
+                                                    <img  src="{{product.image.url}}" class="card-img-top responsive-img mt-2 p-2 img-fluid  "  alt="picture" style="height: 384px;">
+                                                </div>
+                
+                                                <div class="card-body">
+                                                <p class="card-title ">{{product.name}}</p>
+                                                <p class="card-title"><span>Price:&nbsp; </span>{{product.Unit_price}}<b style="font-size:25px; color: rgb(213, 213, 59);">&nbsp;৳</b><span></span></p>
+                                                {% if product.quantity == 0 %}
+                                                <p class="small text-light">Stock: <span class="text-info lead"><mark class="text-danger">{{product.quantity}} <span> /{{product.unit}}</span></mark></span> </p>
+                                                {% else %}
+
+                                                <p class="small text-light">Stock: <span class="text-warning lead">{{product.quantity}}</span> <span> /{{product.unit}}</span> </p>
+
+                                                {% endif %}
+                                                <p class="card-text truncate">{{product.description| truncatewords:10}}</p>
+                
+                                                    <!-- View product button -->
+                                                <a href="{% url 'productDetails' product.id %}" class="btn btn-light border p-2 btn-sm btn-block text-light form-control" style="margin-bottom: 7px; background-color: rgb(114, 6, 67);">Product Details</a>
+                
+                                                    <!--Cart code: To send data to server as form codes below:-->
+                
+                                                <div class="card-footer p-0 no-gutters">
+                
+                                            {% if product|is_in_cart:request.session.cart %}
+                
+                                                {% for i in products.paginator.page_range %}
+                                                    {% if i == products.number %}
+                
+                                                   
+                                                                                                                                <!--minus er form-->
+                                                    
+                                                    {% endif %}
+                
+                                                {% endfor %}
+                                                 
+                                                <div class="row no-gutters p-0 m-0" >
+                
+                                                    <form action="/?page={{i}}#{{product.id}}" method="POST" class="col-1 p-0 mr-2">
+                                                        {% csrf_token %}
+                                                        <input type="text" name="product" value="{{product.id}}" hidden>
+                
+                                                        <input type="text" name="remove" value="True" hidden>
+                
+                                                        <button type="submit" class="pl-2 pr-2 btn btn-block btn-info" style="margin-left: -6px;">-</button>
+                                                    
+                                                    
+                                </form>
+                                                       <!--center value-->
+                                                        <div class="col text-center">
+                                                            {{product|cart_quantity:request.session.cart}} in cart
+                                                        </div>
+                
+                
+                                                        <!--plus er form-->
+                                                <form action="/?page={{i}}#{{product.id}}" method="POST" class="formElement col-2 p-0 ml-3" sty>
+                                                {% csrf_token %}
+                                                <input type="text" name="product" value="{{product.id}}" hidden >
+                                                {% if product.quantity == product|cart_quantity:request.session.cart %}
+
+                                                <button type="submit" class=" btn btn-block btn-info pl-2 pr-2" style="margin-left: -9px;" disabled>
+                                                    +
+                                                </button>
+                                                {% else %}
+
+                                                <button type="submit" class=" btn btn-block pl-2 pr-2 btn-info" style="margin-right: -9px;" >
+                                                    +
+                                                </button>
+                                                {% endif %} 
+                                                </form>
+                                                        
+                                                        
+                                                </div>
+                
+                                                {% else %}
+                                                    <!--Add to cart form-->
+                                                <form action="/?page={{i}}#{{product.id}}" method="POST" class="formElement btn-block ">
+                                                {% csrf_token %}
+                                                <input type="text" name="product" value="{{product.id}}" hidden>
+                                                {% if product.quantity == 0 %}
+                                                <input type="submit"  class="btn btn-light border btn-sm  form-control float-right disabled"  value="Add To Cart">
+                                                {% else %}
+                                                <input style="background-color: rgb(114, 6, 67);" type="submit"  class="btn btn-light border text-light btn-sm p-3 form-control float-right "  value="Add To Cart">
+                                                {% endif %}        
+                                                </form>
+                                                    
+                                                {% endif %}
+                                                </div>
+                                                </div>    
+                                            </div>
+                                        {% endfor %}   
+                                </div>
+                        <!--productsdiv end-->
+                
+                              <div class="row">
+                                  
+                                  <div class="col-lg-12 col-sm-12">
+                                        <!--Paginator -->
+                                         
+                                        <!--End pagination-->
+                
+                                  </div> 
+                              </div>   
+                
+                <!--end products-->
+                    </div>    
+                   
+                </div>
+            </div>
+</div>
+
+
+
+</div>

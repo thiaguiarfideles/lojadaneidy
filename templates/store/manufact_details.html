@@ -1,0 +1,67 @@
+{% extends 'store/base.html' %}
+
+
+{% block content %}
+<!--      Loading template tags -->
+{% load cart %}
+
+{% load custom_filter %}
+<div class="container-fluid  text-primary mb-2">
+
+    
+        <div class="row">
+            <div class="col-lg-12 ">
+                <h2 class="display-4 text-center text-uppercase text-primary">
+                    Manufacturer's profile
+                </h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6  p-3">
+                
+                <img  class="rounded img-fluid img-thumbnail mx-auto d-block" src="{{object.userprofile.image.url}}" alt="" >
+                <p class="lead text-center" style="font-size: 30px;"> {{user.get_full_name}}</p>
+            </div>
+            <div class="col-lg-6  p-3 table-responsive">
+                <p class="display-4 text-center" style="font-size: 30px;">
+                     {{user.get_full_name}}'s Information below:-- 
+                </p>
+
+                <table class="table table-bordered table-info table-hover ">
+                    <thead>
+                        <tr>
+                            <th>Name: </th>
+                            <th>Phone: </th>
+                            <th>Email: </th>
+                            <th>Address: </th>
+                            <th>National ID:</th>
+                        </tr>
+                        
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{user.get_full_name}}</td>
+                            <td>{{object.userprofile.phone}}</td>
+                            <td>{{object.email}}</td>
+                            <td>{{object.userprofile.address}}</td>
+                            <td>
+                                <img src="{{object.userprofile.national_id.url}}" alt="" height="130px">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="display-4 text-uppercase text-center" style="font-size: 25px;">Some Words of {{user.get_full_name}}:</p>
+                <p class="text-center text-light text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, explicabo pariatur dolorem unde cumque rerum obcaecati? Repellat eaque, doloremque quasi enim quis inventore voluptatem dolorum, explicabo, cumque rerum ipsum? Architecto.</p>
+            </div>
+            
+
+        </div>
+    
+    
+   
+    
+      
+        
+</div>
+
+{% endblock %}

@@ -1,0 +1,110 @@
+{% extends 'store/base.html' %}
+
+
+{% block content %}
+<style>
+    #change{
+        opacity: 0.9;
+    }
+</style>
+
+<!--      Loading template tags -->
+{% load cart %}
+
+{% load custom_filter %}
+
+    <div class="container-fluid bg-light text-center line-height-3 m-0">
+        <div class="row  ">
+            <div class="col-lg-12 col-sm-12 ">
+                <h4 class="display-4  text-center text-primary text-uppercase">Product's Details</h4>
+            </div>
+        </div>
+        <div class="row  py-5 mt-0" style="">
+            <div class="col-lg-6 col-sm-12 ">
+                
+                <img class="  d-block mx-auto img-thumbnail my-4 my-lg-5 rounded img-fluid" src="{{object.image.url}}" alt="Image" height="400px" width="500px">
+            </div>
+            <div class=" col-sm-12 col-lg-6 text-center " style="">
+                <p class="display-4 text-dark mt-4">{{object.name}}</p>
+                <hr>
+                <table class=" small table table-bordered table-hover mt-3 text-center table-primary p-3">
+                    <thead>
+                        <tr>
+                            <th>Status</th>
+                            <th>Price</th>
+                            <th>Stock Availablity</th>
+                            <th>Stcok Unit</th>
+                            <th>Discount</th>
+                            <th>Manufacturer's Name:</th>
+                        </tr>Manufacturer
+
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Active</td>
+                            <td>{{object.Unit_price|currency}}/{{object.unit}}</td>
+                            <td>{{object.quantity|available}}</td>
+                            <td>{{object.quantity}} {{object.unit}}</td>
+                            <td>0%</td>
+                            <td>{{object.Manufacturer.username}}</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+               <h4 class=" mt-5  text-dark text-uppercase" style="font-family:  Montserrat;">Product Description:</h4>
+               <p class="lead mt-2 text-dark" style="font-size:20px ; font-weight: 300; ">{{object.description}}</p>
+
+               <div class="row mt-5 text-dark p-3">
+                
+                    
+               
+                <div class="col-lg-12  p-3" id="change">
+
+                    <p class=" text-dark lead text-uppercase text-left my-3" style="font-size: 26px; margin-top: 89px;  font-weight: 200;"> 
+                        Craftsman Profile
+                    </p>
+
+
+                    <img src="{{object.Manufacturer.userprofile.image.url}}" alt="picture" style="max-height:100px; max-width:50%; " class="rounded-circle img-fluid  ">
+                    <form action="" method="POST" class="form-control  mt-2">
+                        {% csrf_token %}
+
+                <button type="submit"  style="width: 50%; outline: none;">
+                                
+    
+                <a href="{% url 'farmerDetails' object.Manufacturer.id %}" class="btn btn-info" style=" color: rgb(222, 211, 211); width: 100%; background-color: rgb(29, 22, 22);">{{object.Manufacturer.username}}</a>
+                                
+        
+                </button> 
+                    </form>
+                </div>
+               </div>
+            </div>
+        </div>
+
+        <div class="row  text-light">
+            
+                <div class="container">
+                    <h4 class="display-4 my-3 text-dark text-uppercase">Words from Craftsman </h4>
+                    <h6 class=" p-3 mb-2 text-uppercase">Name: {{object.Manufacturer.username}} </h6>
+                    <p class="text-muted text-info ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed aliquid ullam repellendus perferendis beatae sequi iste eius a, molestiae at est pariatur veniam distinctio neque necessitatibus praesentium aperiam tempore, minus soluta quisquam ab alias odio rem incidunt? Commodi, itaque magnam!
+
+                    </p>
+                    
+                        
+                        <img src="{{object.Manufacturer.userprofile.image.url}}" alt="picture" style="max-height:380px; " class="rounded img-fluid img-thumbnail my-4">
+                    
+                </div>
+           
+        </div>
+    </div> -->
+
+
+
+
+
+
+
+
+{% endblock %}
