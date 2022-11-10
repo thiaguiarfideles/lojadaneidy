@@ -35,7 +35,7 @@ img {
 
 .card {
   width: 420px;
-  background: linear-gradient(135deg, #0ff0b3 0%, #036ed9 80%);
+  background: linear-gradient(to right, #c02425, #f0cb35);
   overflow: hidden;
   font-family: sans-serif;
   box-shadow: 0 0 40px #00000070;
@@ -125,10 +125,11 @@ p {
 <nav class="w3-sidebar w3-bar-block w3-card w3-top w3-xlarge w3-animate-left" style="display:none;z-index:2;width:40%;min-width:300px" id="mySidebar">
   <a href="javascript:void(0)" onclick="w3_close()"
   class="w3-bar-item w3-button">Close Menu</a>
+  <a href="{% url 'login' %}" onclick="w3_close()" class="w3-bar-item w3-button">Login</a>
   <a href="{% url 'admin:index' %}" onclick="w3_close()" class="w3-bar-item w3-button">Adminstrador</a>
   <a href="{% url 'home' %}" onclick="w3_close()" class="w3-bar-item w3-button">Principal</a>
-  <a href="{% url 'usuarios:perfil_usuario' %}" onclick="w3_close()" class="w3-bar-item w3-button">Criar Perfil</a>
-  <a href="{% url 'usuarios:editar_perfil' %}" onclick="w3_close()" class="w3-bar-item w3-button">Editar Perfil</a>
+  <a href="{% url 'usuarios:editar_perfil' %}" onclick="w3_close()" class="w3-bar-item w3-button">Criar Perfil</a>
+  <a href="{% url 'usuarios:perfil_usuario' %}" onclick="w3_close()" class="w3-bar-item w3-button">Ver Perfil</a>
   <a href="{% url 'person:home_map' %}" onclick="w3_close()" class="w3-bar-item w3-button">Dados do Cliente</a>
   <a href="{% url 'blog_home' %}" onclick="w3_close()" class="w3-bar-item w3-button">BLOG</a>
   <a href="{% url 'listar' %}" onclick="w3_close()" class="w3-bar-item w3-button">Lista de Produtos</a>

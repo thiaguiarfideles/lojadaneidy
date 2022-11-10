@@ -14,7 +14,7 @@ from django.core import serializers
 def sucesso2(request):
     return render(request, 'sucesso.html')
 
-@permission_required('', login_url='/accounts/login/?next=/prestador/cadastro-prestador-pf')
+@permission_required
 def cadastro_prestador_pf(request):
     if request.method == "POST":
         form = PrestadorPessoaFisicaForm(request.POST, request.FILES,request.user)
@@ -29,7 +29,7 @@ def cadastro_prestador_pf(request):
         'form': form
     })
 
-@permission_required('', login_url='/accounts/login/?next=/prestador/cadastro-prestador-pf')    
+@permission_required 
 def dados_pessoais(request):
     if request.method == "POST":
         form = DadosPessoaisForm(request.POST, request.FILES)
@@ -45,7 +45,7 @@ def dados_pessoais(request):
         'form': form
     })
 
-@permission_required('', login_url='/accounts/login/?next=/prestador/cadastro-prestador-pf')
+@permission_required
 def fornecedor(request):
     if request.method == "POST":
         form = FornecedorForm(request.POST, request.FILES)
@@ -62,7 +62,7 @@ def fornecedor(request):
     })    
 
 
-@permission_required('', login_url='/accounts/login/?next=/prestador/cadastro-prestador-pf')
+@permission_required
 def cadastros_list(request):
     usuario = request.user
     cadastros = PrestadorPessoaFisica.objects.filter(user=usuario.id).order_by('-created_at')
@@ -70,7 +70,7 @@ def cadastros_list(request):
         'cadastros':cadastros
     })
 
-@permission_required('', login_url='/accounts/login/?next=/prestador/cadastro-prestador-pf')
+@permission_required
 def cadastro_enviado(request,pk):
     cadastro=get_object_or_404(PrestadorPessoaFisica,pk=pk)
     data = serializers.serialize("python", PrestadorPessoaFisica.objects.filter(pk=pk))

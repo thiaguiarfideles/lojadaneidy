@@ -6,14 +6,8 @@ from django.conf import settings
 User = settings.AUTH_USER_MODEL
 
 
-
-
 def login(request):
-    try:
-        user = request.user
-    except User.DoesNotExist:
-        return redirect('home')
-    return render(request, 'registration/login.html', {'selecteduser': user})        
+    return render(request, 'registration/login.html') 
 
 def home(request):
     return render(request, template_name='home.html')

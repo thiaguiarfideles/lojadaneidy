@@ -24,14 +24,16 @@ from django.conf import settings
 from django.conf.urls.static import static
 from person import views as person
 from django.views.generic import TemplateView
+from core.views import LoginView
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     re_path(r'^accounts/', include('registration.backends.simple.urls')),
+    #path('login/', auth_views.LoginView.as_view(), name='login'),
     path('', views.home, name='home'),
+    path('login/', LoginView.as_view(), name='login'),
     path('', views.home1, name='home1'),
-    #path('person', person.home, name='home_map'),
     path('person/', include('person.urls')),
     path('clientes/', include('clientes.urls')),
     path('todolist/',include('todolist.urls')),
