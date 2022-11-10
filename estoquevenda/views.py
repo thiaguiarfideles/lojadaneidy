@@ -15,7 +15,7 @@ from threading import Thread
 
 
 
-@login_required
+@login_required(login_url='accounts/login')
 def index_estoque(request):
     user_creator = request.user
     t_mes = Thread(gerar_grafico_mensal(user_creator))
@@ -29,7 +29,7 @@ def index_estoque(request):
     return render(request, "index_estoque.html", context)
 
 
-@login_required
+@login_required(login_url='/accounts/login/?next=/vender/')
 def vender(request):
     formvenda = VendaModelForm(request.user, request.POST or None)
     if str(request.method) == "POST":
@@ -46,7 +46,7 @@ def vender(request):
     return render(request, "vender.html", context)
 
 
-@permission_required
+@permission_required('', login_url='/accounts/login/?next=/cadastrar/')
 def cadastrar(request):
     formproduto = ProdutoModelForm(request.POST or None)
     formimagem = ImagemModelForm(request.FILES or None)
@@ -72,7 +72,7 @@ def cadastrar(request):
     }
     return render(request, "cadastrar.html", context)
 
-@permission_required
+@permission_required('', login_url='/accounts/login/?next=/material/')
 def material(request):
     formmaterial = MaterialModelForm(request.POST or None)
 
@@ -129,7 +129,7 @@ def buscar(request):
     return render(request, "buscar.html", context)
 
 
-@permission_required
+@permission_required('', login_url='/accounts/login/?next=/editar/')
 def editar(request, pk):
     produto = Produto.objects.get(id=pk)
 
@@ -162,7 +162,7 @@ def editar(request, pk):
     return render(request, "editar.html", context)
 
 
-@permission_required
+@permission_required('', login_url='/accounts/login/?next=/deletar/')
 def deletar(request, pk):
     Produto.objects.filter(id=pk).delete()
     imagem = Imagem()
